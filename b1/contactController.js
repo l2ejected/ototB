@@ -88,21 +88,6 @@ exports.update = function (req, res) {
 
 // Handle delete contact
 exports.delete = function (req, res) {
-    // Contact.deleteOne({
-    //     _id: req.params.contact_id
-    // }, function (err, contact) {
-    //     if (err) {
-    //         res.send(err);
-    //     } else if (contact == null){
-    //         res.send('This contact does not exist')
-    //     } else {
-    //         res.json({
-    //             status: "Success",
-    //             message: 'Contact deleted',
-    //             data: contact
-    //         });
-    //     }
-    // });
     Contact.findById(req.params.contact_id, function (err, contact) {
         if (err) {
             res.send(err);
