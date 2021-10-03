@@ -6,7 +6,7 @@ References:
 
 Requirements:
 - Node JS
-- Mongo DB (ensure /data/db has relevant permissions - `sudo chown 777 /data/db`) [if `/data/db` doesn't exist, run `sudo mkdir -p /data/db`]
+- Mongo DB (ensure /data/db has relevant permissions - `sudo chown 777 /data/db`) [if `/data/db` doesn't exist: `sudo mkdir -p /data/db`]
 - Testing using Postman
 
 To test:
