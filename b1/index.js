@@ -40,3 +40,5 @@ app.use('/api', apiRoutes);
 app.listen(port, function () {
     console.log("Running taskb1 on port " + port);
 });
+
+module.exports = app;

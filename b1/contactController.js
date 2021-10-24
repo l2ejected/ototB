@@ -1,4 +1,5 @@
 // contactController.js
+// import contacts from './dummy/contacts.js'
 
 // Import contact model
 Contact = require('./contactModel');
