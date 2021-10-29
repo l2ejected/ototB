@@ -12,3 +12,4 @@ Requirements:
 To test:
 1) Run MongoDB server with `mongod` on terminal
 2) On a separate terminal, navigate to directory 'b1' and run `npm run test`
+3) Deployed Travis so on commits, there will be auto testing.
