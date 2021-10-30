@@ -6,6 +6,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 // Import Mongoose
 let mongoose = require('mongoose');
+let cors = require('cors');
 // Initialize the app
 let app = express();
 
@@ -17,6 +18,13 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use(cors());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, PATCH');
+    next();
+});
 
 // Connect to Mongoose and set connection variable
 mongoose.connect('mongodb://localhost/b1', { useNewUrlParser: true});

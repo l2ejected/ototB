@@ -25,6 +25,7 @@ router.route('/contacts')
     
 // Update a contact by id - patch has same functionality as put
 router.route('/contacts/update/:contact_id')
+    .patch(contactController.update)
     .put(contactController.update); 
 
 // Delete a contact by id
