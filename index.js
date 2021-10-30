@@ -1,5 +1,6 @@
 // FileName: index.js
 // Import express
+let path = require('path');
 let express = require('express');
 // Import Body parser
 let bodyParser = require('body-parser');
@@ -30,12 +31,17 @@ else
 // Set up server port
 var port = process.env.PORT || 8080
 
+app.use(express.static(path.resolve(__dirname, './client/build')));
+
 // Send msg for default URL
-app.get('/', (req, res) => res.send('Hello World with Express and Nodemon + mongoDB'));
+app.get('/', (req, res) => res.send('Hello World with Express and Nodemon + mongoDB. This is the backend.'));
 
 // Use Api routes in the App
 app.use('/api', apiRoutes);
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+})
 // Launch app to listen to specified port
 app.listen(port, function () {
     console.log("Running taskb1 on port " + port);

@@ -5,4 +5,3 @@ services:
   - mongodb
 
 before_script: npm install
-# before_script: chmod 0777 ./server/node_modules/.bin/mocha
