@@ -4,4 +4,5 @@ node_js: 16.10
 services: 
   - mongodb
 
+before_script: npm -i
 # before_script: chmod 0777 ./server/node_modules/.bin/mocha
