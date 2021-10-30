@@ -4,7 +4,7 @@ let app = require('../index');
 
 chai.use(chaiHttp);
 chai.should();
-contact = {};
+contacts = {};
 
 describe("Contacts", () => {
   describe("POST /", () => {
@@ -71,6 +71,7 @@ describe("Contacts", () => {
         .end((err, res) => {
           res.status.should.equal(200);
           res.body.should.be.a('object');
+          res.body.data.name.should.equal('charlie2');
           console.log(res.body.data);
           done();
         });
