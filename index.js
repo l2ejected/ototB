@@ -39,7 +39,7 @@ else
 // Set up server port
 var port = process.env.PORT || 8080
 
-// app.use(express.static(path.resolve(__dirname, './client/build')));
+app.use(express.static(path.resolve(__dirname, './client/build')));
 
 // Send msg for default URL
 app.get('/', (req, res) => res.send('Hello World with Express and Nodemon + mongoDB. This is the backend.'));
