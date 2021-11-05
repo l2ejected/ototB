@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 });
 
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/b1', { useNewUrlParser: true});
+mongoose.connect('mongodb+srv://cs3219ototb:FzRbXYZabxuWK3ru@cluster0.djz8x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true});
 var db = mongoose.connection;
 
 // Added check for db connection
@@ -39,7 +39,7 @@ else
 // Set up server port
 var port = process.env.PORT || 8080
 
-app.use(express.static(path.resolve(__dirname, './client/build')));
+// app.use(express.static(path.resolve(__dirname, './client/build')));
 
 // Send msg for default URL
 app.get('/', (req, res) => res.send('Hello World with Express and Nodemon + mongoDB. This is the backend.'));
@@ -47,9 +47,6 @@ app.get('/', (req, res) => res.send('Hello World with Express and Nodemon + mong
 // Use Api routes in the App
 app.use('/api', apiRoutes);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
-})
 // Launch app to listen to specified port
 app.listen(port, function () {
     console.log("Running taskb1 on port " + port);

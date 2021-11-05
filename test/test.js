@@ -7,7 +7,26 @@ chai.should();
 contacts = {};
 
 describe("Contacts", () => {
+  
   describe("POST /", () => {
+    it('should not post new contact with missing required fields name and email', (done) => {
+      chai.request(app)
+        .post('/api/contacts/')
+        .type('form')
+        .send({
+          name: "",
+          email: "",
+          gender: "male",
+          phone: "12345678"
+        })
+        .end((err, res) => {
+          res.status.should.equal(200);
+          res.body.should.be.a('object');
+          console.log(res.body.data);
+          done();
+        });
+    });
+    
     // test to post new contact
     it('should post new contact with these details', (done) => {
       chai.request(app)

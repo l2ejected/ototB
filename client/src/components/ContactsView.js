@@ -9,13 +9,13 @@ export default function ContactsView() {
     fetch("/api/contacts")
       .then((res) => res.json())
       .then((data) => setData(data.data));
-  }, []);
+  }, [data]);
 
   const renderContacts = () => {
     return data.map((obj) => {
       return (
         <div className="contact" key={obj._id}>
-          Name: {obj.name} | Email: {obj.email} | Phone: {obj.phone} | Gender: {obj.gender} | ID: {obj._id}
+          Name: {obj.name} ID: {obj._id} | Email: {obj.email} | Phone: {obj.phone} | Gender: {obj.gender}
         </div>
       );
     });

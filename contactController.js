@@ -25,7 +25,7 @@ exports.index = function (req, res) {
 // Handle create contact actions
 exports.new = function (req, res) {
     var contact = new Contact();
-    contact.name = req.body.name ? req.body.name : contact.name;
+    contact.name = req.body.name;
     contact.gender = req.body.gender;
     contact.email = req.body.email;
     contact.phone = req.body.phone;
@@ -33,7 +33,7 @@ exports.new = function (req, res) {
     // save the contact and check for errors
     contact.save(function (err) {
         if (err) {
-            res.json(err);
+            res.send('Name is required to save contact');
         } else {
             res.json({
                 message: 'New contact created!',
@@ -47,8 +47,6 @@ exports.new = function (req, res) {
 exports.view = function (req, res) {
     Contact.findById(req.params.contact_id, function (err, contact) {
         if (err) {
-            res.send(err);
-        } else if (contact == null){
             res.send('This contact does not exist');
         } else {
             res.json({
@@ -63,9 +61,7 @@ exports.view = function (req, res) {
 exports.update = function (req, res) {
     Contact.findById(req.params.contact_id, function (err, contact) {
         if (err) {
-            res.send(err);
-        } else if (contact == null) {
-                res.send('This contact does not exist');
+            res.send('This contact does not exist');
         } else {
             contact.name = req.body.name ? req.body.name : contact.name;
             contact.gender = req.body.gender ? req.body.gender : contact.gender;
@@ -91,16 +87,12 @@ exports.update = function (req, res) {
 exports.delete = function (req, res) {
     Contact.findById(req.params.contact_id, function (err, contact) {
         if (err) {
-            res.send(err);
-        } else if (contact == null) {
             res.send('This contact does not exist');
         } else {
             Contact.deleteOne({
                 _id: req.params.contact_id
             }, function (err, contact) {
                 if (err) {
-                    res.send(err);
-                } else if (contact == null){
                     res.send('This contact does not exist')
                 } else {
                     res.json({
